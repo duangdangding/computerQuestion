@@ -1,0 +1,8 @@
+C:\Users\Administrator>dism.exe /online /enable-feature /featurename:netfx3 /Source:D:\sources\sxs
+下载原版系统镜像
+解压  把resource  这个文件夹放到根目录
+
+
+
+
+打开cmd 输入上面这一句话

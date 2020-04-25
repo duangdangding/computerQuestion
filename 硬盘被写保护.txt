@@ -1,0 +1,7 @@
+①首先进入开始运行，输入 regedit 命令进入注册表。
+
+
+②进入注册表编辑器后我们依次找到：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\StorageDevicePolicies
+
+
+③若找到StorageDevicePolicies项之后，亲们可以在右侧窗口中找到“ WriteProtect ”表，将鼠标放在WriteProtect上单击鼠标左键，然后点击鼠标右键选择“修改”将值改为0

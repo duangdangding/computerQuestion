@@ -1,0 +1,3 @@
+单击Windows的“开始”菜单，单击“运行”，在“打开”框中键入“regedit”，单击“确定”按钮，打开“注册表编辑器”窗口。 2. 展开“HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers”分支，在其下找到要删除的无用项，比如上图中的“打开好桌道壁纸”,然后右键单击该项，再单击“删除”将其删除即可清除右键菜单中的对应选项。
+对于仅在文件夹右键菜单中才有的选项，可到HKEY_CLASSES_ROOT\Directory\shellHKEY_CLASSES_ROOT\ Directory\shellex\ContextMenuHandlers分支下查找。有时HKEY_CLASSES_ROOT\Folder\shell和HKEY_CLASSES_ROOT \Folder\shellex\ContextMenuHandlers分支下也有右键菜单中的选项。
+3.关闭“注册表编辑器”窗口。

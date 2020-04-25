@@ -1,0 +1,40 @@
+开机动画修改第一步：
+
+
+　　打开注册表修改值“OEMBackground”为“1”。
+
+
+　　1.按“win键+r键”打开运行对话框，在方框内输入“regedit”然后确定
+
+
+　　
+
+
+　　2.按照下面的树形结构打开，找到“OEMBackground”值并为“1”。〔HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Authentication\LogonUI\Background〕
+
+
+　　开机动画修改第二步：
+
+
+　　把图片“backgroundDefault.jpg”放到目录“%windir%\system32\oobe\info\backgrounds\”里。
+
+
+　　开机动画修改第三步：
+
+
+　　看效果
+
+
+　　同时按win键+L键，即锁定账户键，或者开始菜单--锁定(O)。
+
+
+　　注意事项：
+
+
+　　1.图片名字是固定的，必须为“backgroundDefault.jpg”，并且大小不能超过256KB，否则使用默认的背景。
+
+
+　　2.注册表值、目录不存在的话自己创建。
+
+
+　　其实修改开机动画过程很简单，简单的三步操作，我们就可以对开机动画进行创意修改，打造出属于自己风格的情调来

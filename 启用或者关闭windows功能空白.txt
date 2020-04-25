@@ -1,0 +1,2 @@
+首先看一下
+用的系统是win10的家庭版，在启动Talnet客户端时，打开启动和关闭windows功能时发现空白问题，尝试解决数次无果。尝试有以下的方式（主要是网上查询到的相关解决办法）：一、检查启用或关闭windows功能的Windows Modules Installer 服务是否被禁用。二.找到HKEY_LOCAL_MACHINE修改目录下System\CurrentControlSet\Control的BootDriverFlags值改为Value: ffffffff。三.通过cmd输入指令的方式开启Talnet客户端

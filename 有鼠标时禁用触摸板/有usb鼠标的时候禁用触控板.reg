@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\Software\Synaptics\SynTPEnh]
+"DisableIntPDFeature"=dword:00000003
+[HKEY_LOCAL_MACHINE\SOFTWARE\Synaptics\SynTPEnh]
+"ShowDisableIcon"=dword:00000001

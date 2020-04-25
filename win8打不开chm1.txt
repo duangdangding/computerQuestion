@@ -1,0 +1,67 @@
+﻿一.如果不能打开，可这样恢复文件关联： 
+1、开始运行，输入：regsvr32 C:\windows\system32\hhctrl.ocx ，确定，重新关联文件。 
+2、执行一下windows目录里的hh.exe 。 
+有时候chm文件放在中文目录就不行。包括中文chm名字。试着把文件考出来.中文名字一改. 
+
+二.1.在微软网站上下载hhupd.exe,安装hh.exe后并运行。  
+2.实际上,下载hhupd.exe后,运行后就可以了。这个东西大小为461kb 3.在c:\windows\system32里找到“Hhctrl.ocx”文件,然后运行:“regsvr32“c:\windows\system32\hhctrl.ocx... 
+网上的解决方法不可行，下载不了hhupd.exe.我直接执行regsvr32 c:\windows\system32\hhctrl.ocx就ok了。 
+
+解决方法2是： 
+1，右键关联chm文件的“打开方式”到\Windows\HH.exe 
+2，在命令行运行regsvr32 itss.dll 
+3，在命令行运行regsvr32 hhctrl.ocx 
+
+三.也许是 HH.EXE 所必需的某个组件出了问题。但是不知道 HH.EXE 会用到些什么组件，所以上网查了一下，有人建议重新注册 hhctrl.ocx。我在系统目录下找到了 hhctrl.ocx，重新注册一下 hhctrl.ocx 试试：regsvr32 hhctrl.ocx。依然不能正常阅读 CHM。 
+
+既然如此，很有可能是协议出了问题。HH.EXE 用的是 ms-its 等协议，这些协议应该是由某个 DLL 文件提供服务的。问题是，是什么 DLL 呢？于是再用 Google 搜索 ms-its 协议。终于找到了，原来是一个 itss.dll 在做服务。不过网上查到的解决方案是修改注册表。 
+
+要修改 ItssRestrictions 注册表项以启用特定的安全区域，请按照下列步骤操作： 
+1. 单击“开始”，单击“运行”，键入 regedit，然后单击“确定”。 
+2. 找到并单击下面的子项： 
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HTMLHelp\1.x\ItssRestrictions 
+注意：如果该注册表子项不存在，则使用方法 1 中的步骤 2a 和 2b 创建该子项。 
+3. 右键单击“ItssRestrictions”子项，指向“新建”，然后单击“DWORD 值”。 
+4. 键入 MaxAllowedZone，然后按 Enter 键。 
+5. 右键单击“MaxAllowedZone”值，然后单击“修改”。 
+6. 在“数值数据”框中，键入 0 至 4 之间的一个数字，然后单击“确定”。 
+7. 退出注册表编辑器。 
+注意：默认情况下，“MaxAllowedZone”值设置为 0。下表摘要列出了“MaxAllowedZone”值对各个项的解释。 MaxAllowedZone 本地计算机区域 本地 Intranet 区域 受信任的站点区域 Internet 区域 受限站点区域 
+0 允许 阻止 阻止 阻止 阻止 
+1 允许 允许 阻止 阻止 阻止 
+2 允许 允许 允许 阻止 阻止 
+3 允许 允许 允许 允许 阻止 
+4 允许 允许 允许 允许 允许 
+
+注册表修改之后还是不能打开！ 
+试试偷懒的办法吧——重新注册DLL：regsvr32 itss.dll。 
+
+四.操作系统的语言不是中文（经常出现这种情况） 
+1.看看你的 OS 是不是中文的 OS ？ 如果你的 OS 不是 中文的，那么到 Control Pane 中看看那个“语言和区域” 的option， 打开看看“区域选项” 是不是中国，这个选项对一些软件还是有一些影像的。 
+2.如果你的CHM文件是中文的，可能存在缺省语言设置问题。可能你用是的英文版的WINDOWS，把RAGIONAL AND LANGUAGE OPTIONS中的LANGUAGE 和ADVANCED 中的 语言和国家选项都设置成中文（PRC）。就可以了 
+
+五.可以试试改变此文件的名字.比如去掉多余的符号 
+
+六.如果都不能，最后一招就是，把电子书CHM格式转换为PDF文件： 
+CHM Converter是一个专门转换CHM格式的文件，它可以把CHM文件转换成PDF、TXT、DOC等常用的格式。 
+http://dl.pconline.com.cn/html/1/6/dlid=11896&dltypeid=1&pn=0&.html 
+
+下载后运行软件，软件默认是英文界面，点击菜单“Tools-Language”，在弹出的对话框中选择“Chinese_Simplified”就可以换成中文了，软件还支持其他很多语言。 
+
+选好语言后点击左上角的“打开”按钮来选择要转换的CHM文件，如果CHM文件是英文版的，那么在旁边的下拉菜单中就选择 “DEFAILT_CHARSET”，如果是中文的，那需要在下拉菜单中选择“GB2312_CHARSET”，否则会产生乱码，然后在右面的“导出”中来选择要转换的文件类型，软件支持很多格式的文件，如这里选择“Word97-2003”，最后点击“另存数据库为”按钮，选择保存的文件夹后就开始进行转换了。 
+
+PS: Window2K中不能打开*.chm文件的解决办法 
+这个问题的发生，是由于hhctrl.ocx的版本号出现错误或未正确注册。原因在于安装的其他软件用hhctrl.ocx的旧版本替换了原来的版本。 
+IE6SP1中，这个文件的版本号应为5.2.3735.0。可以看看你的系统这个文件的版本号。 
+位于winnt/system32这个文件夹。大小504K（英文版本）从其他相同的系统（IE版本也相同）中COPY一份 
+粘贴到你的系统相应文件夹中。然后注册一下。 
+
+注意： 
+1、先替换winnt/system32/dllcache文件夹的这个文件 
+后替换winnt/system32文件夹里的这个文件 
+2、如果看不到这个文件， 
+先工具--文件夹选项中，设置显示隐藏文件 
+并设置显示系统文件 
+3、注册的方法是 
+开始--运行，输入regsvr32 hhctrl.ocx 
+之后出来一个注册成功的对话框，确定然后重启系统。
